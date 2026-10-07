@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rational Rush — Pecahan, Desimal & Persen | Aman</title>
+<style>
+:root{
+  --purple:#6f4bd8; --purple2:#8d6df0; --ink:#222338; --muted:#6f7285;
+  --bg:#f7f5ff; --card:#ffffff; --line:#e9e3ff; --gold:#f5b83b; --green:#2fa36b;
+  --red:#e75b63; --blue:#4b8df8; --soft:#f1edff; --shadow:0 18px 55px rgba(74,56,130,.15);
+}
+*{box-sizing:border-box} body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:radial-gradient(circle at 15% 10%,#eee8ff 0,transparent 33%),radial-gradient(circle at 85% 0,#fff2cd 0,transparent 28%),var(--bg);color:var(--ink);min-height:100vh}
+button,select,input{font:inherit}.wrap{width:min(1100px,94vw);margin:0 auto;padding:28px 0 48px}.hidden{display:none!important}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.03em}.brand-badge{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--purple),var(--purple2));display:grid;place-items:center;color:white;box-shadow:0 10px 24px rgba(111,75,216,.28)}
+.hero{background:rgba(255,255,255,.9);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);padding:38px;position:relative;overflow:hidden}.hero:before{content:"";position:absolute;width:230px;height:230px;border-radius:50%;right:-70px;top:-85px;background:linear-gradient(135deg,#e8ddff,#fff0c8)}
+.kicker{display:inline-flex;gap:8px;align-items:center;padding:7px 11px;border-radius:999px;background:var(--soft);color:var(--purple);font-size:13px;font-weight:800}.title{font-size:clamp(42px,7vw,84px);line-height:.86;margin:18px 0 14px;letter-spacing:-.055em}.title span{display:block;color:var(--purple)}.subtitle{font-size:18px;line-height:1.6;max-width:760px;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:25px 0}.stat{background:#faf9ff;border:1px solid var(--line);padding:15px;border-radius:18px}.stat b{font-size:21px;display:block}.stat small{color:var(--muted)}
+.start-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;margin-top:20px}.panel{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px}.panel h3{margin:0 0 12px}.field{display:grid;gap:7px;margin:13px 0}.field label{font-size:13px;font-weight:800;color:var(--muted)}.field input,.field select{width:100%;border:1px solid #dcd5f4;border-radius:13px;padding:13px 14px;background:#fff;outline:none}.field input:focus,.field select:focus{border-color:var(--purple);box-shadow:0 0 0 3px #eee9ff}
+.btn{border:0;border-radius:14px;padding:13px 17px;font-weight:850;cursor:pointer;transition:.2s}.btn-primary{background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff;box-shadow:0 10px 25px rgba(111,75,216,.28)}.btn-primary:hover{transform:translateY(-1px)}.btn-soft{background:var(--soft);color:var(--purple)}.btn-ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}
+.rules{display:grid;gap:9px;margin:0;padding:0;list-style:none}.rules li{display:flex;gap:10px;color:var(--muted);line-height:1.4}.rules b{color:var(--ink)}
+.quiz-shell{display:grid;gap:16px}.topbar{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center}.progress-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px 16px;box-shadow:0 8px 30px rgba(74,56,130,.08)}.progress-meta{display:flex;justify-content:space-between;gap:10px;font-size:13px;font-weight:800;color:var(--muted)}.progress{height:10px;background:#eeeaf9;border-radius:999px;margin-top:9px;overflow:hidden}.progress>div{height:100%;width:0;background:linear-gradient(90deg,var(--purple),var(--gold));border-radius:999px;transition:width .3s}
+.timer{width:82px;height:82px;border-radius:24px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;box-shadow:0 8px 30px rgba(74,56,130,.08)}.timer b{font-size:27px}.timer small{display:block;text-align:center;color:var(--muted);font-size:10px}.timer.danger{border-color:#f2b7ba;background:#fff6f6}.timer.danger b{color:var(--red)}
+.qcard{background:#fff;border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow);padding:25px}.qhead{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.chips{display:flex;gap:7px;flex-wrap:wrap}.chip{font-size:12px;font-weight:850;padding:6px 9px;border-radius:999px;background:var(--soft);color:var(--purple)}.chip.level-easy{background:#e9f7ef;color:#218354}.chip.level-medium{background:#fff4dc;color:#a36b00}.chip.level-difficult{background:#ffe9ea;color:#b3444c}.qtext{font-size:clamp(23px,3vw,35px);line-height:1.25;font-weight:850;letter-spacing:-.02em;margin:17px 0 18px}.visual{background:linear-gradient(180deg,#fbfaff,#f7f4ff);border:1px solid var(--line);border-radius:20px;padding:18px;min-height:135px;display:grid;place-items:center;margin-bottom:18px;overflow:hidden}.visual-title{font-size:12px;font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:11px}.opt{border:1px solid #ddd6f4;background:#fff;border-radius:16px;padding:15px 16px;text-align:left;font-weight:800;cursor:pointer;min-height:56px;display:flex;align-items:center;gap:11px;transition:.18s}.opt:hover{border-color:var(--purple);transform:translateY(-1px);box-shadow:0 7px 18px rgba(111,75,216,.09)}.opt .letter{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:var(--soft);color:var(--purple);font-size:13px;flex:0 0 auto}.opt.correct{border-color:#8bd0ad;background:#effaf4}.opt.wrong{border-color:#efadb1;background:#fff1f2}.opt:disabled{cursor:default;transform:none}
+.actions{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:14px;flex-wrap:wrap}.hintbox,.feedback{margin-top:14px;border-radius:16px;padding:14px 16px;line-height:1.55}.hintbox{background:#fff7df;border:1px solid #f0d58a}.feedback.good{background:#edf9f3;border:1px solid #9ed6b8}.feedback.bad{background:#fff0f1;border:1px solid #efb7ba}.feedback strong{display:block;margin-bottom:4px}.nextrow{display:flex;justify-content:flex-end;margin-top:12px}
+.fracbar{display:flex;gap:5px;width:min(520px,88%)}.fracbar .cell{height:54px;flex:1;border-radius:9px;background:#ebe7f7;border:1px solid #ddd7ef}.fracbar .cell.on{background:linear-gradient(135deg,var(--purple),var(--purple2));border-color:transparent}.caption{text-align:center;margin-top:10px;font-weight:800;color:var(--muted)}
+.ring{width:120px;height:120px;border-radius:50%;display:grid;place-items:center;position:relative}.ring:after{content:"";width:82px;height:82px;border-radius:50%;background:#fff;position:absolute}.ring span{z-index:1;font-weight:900;font-size:24px}.flow{display:flex;align-items:center;justify-content:center;gap:9px;flex-wrap:wrap}.node{padding:12px 15px;border-radius:14px;background:#fff;border:1px solid #dcd5f4;font-weight:900}.arrow{font-size:24px;color:var(--purple)}
+.grid100{display:grid;grid-template-columns:repeat(10,12px);gap:3px}.grid100 i{width:12px;height:12px;border-radius:3px;background:#e9e5f5}.grid100 i.on{background:var(--purple)}
+.numberline{width:min(650px,90%);position:relative;height:70px}.numberline .line{position:absolute;left:2%;right:2%;top:34px;height:4px;background:#cbc4e9;border-radius:999px}.tick{position:absolute;top:20px;transform:translateX(-50%);text-align:center;font-size:11px;font-weight:800;color:var(--muted)}.tick:before{content:"";display:block;width:3px;height:30px;background:var(--purple);margin:0 auto 3px;border-radius:4px}.money{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}.tag{padding:14px 18px;border-radius:14px;background:#fff;border:2px dashed #d8c9ff;font-weight:900}.story{display:flex;align-items:center;gap:16px;justify-content:center}.story .icon{font-size:54px}.story .big{font-size:30px;font-weight:900}.story small{color:var(--muted);display:block}.people{display:grid;grid-template-columns:repeat(10,22px);gap:7px;justify-content:center}.person{width:22px;height:22px;border-radius:50%;background:#e2dcf7}.person.on{background:var(--purple)}.person.alt{background:var(--gold)}
+.result{background:#fff;border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);padding:30px}.result h1{margin:0;font-size:42px}.scorebig{font-size:76px;font-weight:950;color:var(--purple);letter-spacing:-.06em}.summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0}.mini{padding:16px;border-radius:17px;background:#faf9ff;border:1px solid var(--line)}.mini b{font-size:24px;display:block}.mini small{color:var(--muted)}.topic-row{display:grid;grid-template-columns:170px 1fr 55px;gap:10px;align-items:center;margin:9px 0}.topic-row .bar{height:10px;background:#eeeaf8;border-radius:999px;overflow:hidden}.topic-row .bar span{display:block;height:100%;background:linear-gradient(90deg,var(--purple),var(--gold));border-radius:999px}.review{margin-top:22px}.review-item{padding:13px 0;border-bottom:1px solid var(--line);line-height:1.5}.review-item b{color:var(--red)}
+.footer-note{text-align:center;color:var(--muted);font-size:12px;margin-top:20px}
+@media(max-width:760px){.hero{padding:24px}.stats{grid-template-columns:1fr 1fr}.start-grid{grid-template-columns:1fr}.options{grid-template-columns:1fr}.summary-grid{grid-template-columns:1fr 1fr}.topic-row{grid-template-columns:120px 1fr 45px}.qcard{padding:18px}.topbar{grid-template-columns:1fr auto}.timer{width:70px;height:70px;border-radius:20px}.timer b{font-size:23px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section id="startScreen" class="hero">
+    <div class="brand"><div class="brand-badge">A</div><div>ALGONOVA • LESSON REVIEW</div></div>
+    <div class="kicker">⚡ Kelas 10 • Penguatan Fondasi</div>
+    <h1 class="title">RATIONAL <span>RUSH</span></h1>
+    <p class="subtitle">Kuis interaktif 35 soal untuk <b>Aman</b>: pecahan, desimal, persen, konversi, operasi campuran, hingga soal cerita multilangkah. Satu soal per layar dengan visual, hint, feedback langsung, dan analisis performa akhir.</p>
+    <div class="stats">
+      <div class="stat"><b>35 soal</b><small>bertahap: easy → difficult</small></div>
+      <div class="stat"><b>60 dtk</b><small>waktu dasar tiap soal</small></div>
+      <div class="stat"><b>+5–15 dtk</b><small>bonus waktu opsional</small></div>
+      <div class="stat"><b>≥ 80%</b><small>target akurasi</small></div>
+    </div>
+    <div class="start-grid">
+      <div class="panel">
+        <h3>Siap mulai?</h3>
+        <div class="field"><label>Nama siswa</label><input id="studentName" value="Aman" maxlength="30" /></div>
+        <div class="field"><label>Tambahan waktu per soal</label>
+          <select id="bonusTime"><option value="0">Tanpa tambahan (60 detik)</option><option value="5">+5 detik</option><option value="10" selected>+10 detik</option><option value="15">+15 detik</option></select>
+        </div>
+        <button id="startBtn" class="btn btn-primary" style="width:100%;margin-top:8px">Mulai Kuis 🚀</button>
+        <div id="bestScore" class="footer-note"></div>
+      </div>
+      <div class="panel">
+        <h3>Mode latihan</h3>
+        <ul class="rules">
+          <li>🧠 <span><b>Hint tersedia di setiap soal</b> dan penggunaan hint dicatat pada hasil akhir.</span></li>
+          <li>🎯 <span><b>Feedback langsung</b> muncul setelah menjawab atau waktu habis.</span></li>
+          <li>📊 <span><b>Analisis topik</b> menampilkan konversi, operasi, dan soal cerita.</span></li>
+          <li>💾 <span><b>Skor terbaik</b> tersimpan di browser perangkat ini.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="quizScreen" class="quiz-shell hidden">
+    <div class="topbar">
+      <div class="progress-card">
+        <div class="progress-meta"><span id="progressText">Soal 1 dari 35</span><span id="scoreText">Skor 0</span></div>
+        <div class="progress"><div id="progressFill"></div></div>
+      </div>
+      <div id="timerBox" class="timer"><div><b id="timerText">70</b><small>detik</small></div></div>
+    </div>
+    <div class="qcard">
+      <div class="qhead"><div class="chips"><span id="topicChip" class="chip"></span><span id="levelChip" class="chip"></span></div><div class="chip" id="studentChip">Aman</div></div>
+      <div id="questionText" class="qtext"></div>
+      <div id="visual" class="visual"></div>
+      <div id="options" class="options"></div>
+      <div class="actions"><button id="hintBtn" class="btn btn-soft">💡 Lihat hint</button><span id="hintCountText" style="font-size:12px;color:var(--muted)"></span></div>
+      <div id="hintBox" class="hintbox hidden"></div>
+      <div id="feedback" class="feedback hidden"></div>
+      <div id="nextRow" class="nextrow hidden"><button id="nextBtn" class="btn btn-primary">Soal berikutnya →</button></div>
+    </div>
+  </section>
+
+  <section id="resultScreen" class="result hidden"></section>
+</div>
+
+<script>
+const questions = [
+{topic:'Konversi',level:'Easy',q:'Nilai desimal dari 3/4 adalah ...',opts:['0,34','0,50','0,75','0,80'],a:2,hint:'Bagi pembilang dengan penyebut: 3 ÷ 4.',exp:'3 ÷ 4 = 0,75. Jadi 3/4 = 0,75 = 75%.',v:{t:'fraction',n:3,d:4,label:'3 dari 4 bagian'}},
+{topic:'Konversi',level:'Easy',q:'Bentuk pecahan paling sederhana dari 0,6 adalah ...',opts:['1/6','3/5','6/5','2/3'],a:1,hint:'0,6 = 6/10, lalu sederhanakan.',exp:'0,6 = 6/10 = 3/5 setelah pembilang dan penyebut dibagi 2.',v:{t:'fraction',n:6,d:10,label:'0,6 = 6/10'}},
+{topic:'Konversi',level:'Easy',q:'35% jika ditulis sebagai pecahan paling sederhana adalah ...',opts:['7/20','3/5','35/10','7/10'],a:0,hint:'Tulis 35% sebagai 35/100.',exp:'35% = 35/100 = 7/20.',v:{t:'percent',p:35,label:'35 dari 100'}},
+{topic:'Konversi',level:'Easy',q:'1,25 setara dengan ... persen.',opts:['12,5%','25%','100%','125%'],a:3,hint:'Untuk mengubah desimal ke persen, kalikan 100%.',exp:'1,25 × 100% = 125%.',v:{t:'convert',items:['1,25','× 100%','125%']}},
+{topic:'Konversi',level:'Easy',q:'Bilangan campuran 2 1/5 sama dengan desimal ...',opts:['2,05','2,20','2,50','2,75'],a:1,hint:'1/5 = 0,2. Tambahkan ke 2.',exp:'2 1/5 = 2 + 0,2 = 2,2.',v:{t:'flow',items:['2 1/5','2 + 1/5','2 + 0,2','?']}},
+{topic:'Konversi',level:'Medium',q:'0,375 dalam bentuk pecahan paling sederhana adalah ...',opts:['3/8','5/8','3/10','15/32'],a:0,hint:'0,375 = 375/1000. Sederhanakan dengan membagi 125.',exp:'375/1000 = 3/8.',v:{t:'fraction',n:3,d:8,label:'3/8 = 0,375'}},
+{topic:'Konversi',level:'Medium',q:'62,5% setara dengan pecahan ...',opts:['3/5','5/8','5/6','8/5'],a:1,hint:'62,5% = 0,625. Ingat 0,625 = 5/8.',exp:'62,5% = 0,625 = 625/1000 = 5/8.',v:{t:'fraction',n:5,d:8,label:'5 dari 8 bagian'}},
+{topic:'Konversi',level:'Medium',q:'7/20 jika diubah ke persen adalah ...',opts:['28%','30%','35%','40%'],a:2,hint:'Ubah penyebut 20 menjadi 100 dengan mengalikan 5.',exp:'7/20 = 35/100 = 35%.',v:{t:'convert',items:['7/20','× 5/5','35/100','35%']}},
+{topic:'Konversi',level:'Medium',q:'Pernyataan yang benar adalah ...',opts:['0,45 = 4/5','45% = 9/20','0,45 = 45/10','45% = 4,5'],a:1,hint:'45% = 45/100. Sederhanakan pecahannya.',exp:'45% = 45/100 = 9/20. Nilai desimalnya adalah 0,45.',v:{t:'convert',items:['45%','0,45','9/20']}},
+{topic:'Konversi',level:'Difficult',q:'Urutan dari yang terkecil ke terbesar yang benar adalah ...',opts:['0,58 < 57% < 3/5 < 0,62','57% < 0,58 < 3/5 < 0,62','57% < 3/5 < 0,58 < 0,62','3/5 < 57% < 0,58 < 0,62'],a:1,hint:'Ubah semuanya ke desimal: 57%, 0,58, 3/5, 0,62.',exp:'57% = 0,57; 0,58 tetap; 3/5 = 0,60; 0,62 tetap. Jadi 0,57 < 0,58 < 0,60 < 0,62.',v:{t:'numberline',vals:[['57%',.57],['0,58',.58],['3/5',.60],['0,62',.62]],min:.55,max:.64}},
+
+{topic:'Operasi',level:'Easy',q:'2/3 + 1/4 = ...',opts:['3/7','5/7','11/12','7/12'],a:2,hint:'KPK dari 3 dan 4 adalah 12.',exp:'2/3 = 8/12 dan 1/4 = 3/12, sehingga jumlahnya 11/12.',v:{t:'flow',items:['2/3','+','1/4','=','?']}},
+{topic:'Operasi',level:'Easy',q:'5/6 − 1/4 = ...',opts:['7/12','4/10','1/2','13/24'],a:0,hint:'Gunakan penyebut 12.',exp:'5/6 = 10/12 dan 1/4 = 3/12, jadi 10/12 − 3/12 = 7/12.',v:{t:'flow',items:['5/6','−','1/4','=','?']}},
+{topic:'Operasi',level:'Easy',q:'3/5 × 10/9 = ...',opts:['2/3','3/2','5/6','6/5'],a:0,hint:'Sederhanakan faktor 3 dengan 9 dan 10 dengan 5 sebelum mengalikan.',exp:'(3×10)/(5×9) = 30/45 = 2/3.',v:{t:'flow',items:['3/5','×','10/9','→','sederhanakan']}},
+{topic:'Operasi',level:'Medium',q:'7/8 ÷ 14/15 = ...',opts:['15/16','16/15','7/15','105/112'],a:0,hint:'Pembagian pecahan = kali dengan kebalikan.',exp:'7/8 × 15/14 = 15/16 setelah disederhanakan.',v:{t:'flow',items:['7/8','÷','14/15','→','× 15/14']}},
+{topic:'Operasi',level:'Easy',q:'2,75 + 1,48 − 0,96 = ...',opts:['3,17','3,27','3,37','4,19'],a:1,hint:'Hitung 2,75 + 1,48 terlebih dahulu, lalu kurangi 0,96.',exp:'2,75 + 1,48 = 4,23; 4,23 − 0,96 = 3,27.',v:{t:'flow',items:['2,75','+ 1,48','− 0,96','?']}},
+{topic:'Operasi',level:'Medium',q:'4,2 ÷ 0,6 + 1,35 = ...',opts:['7,35','8,35','8,25','9,05'],a:1,hint:'Kerjakan pembagian terlebih dahulu.',exp:'4,2 ÷ 0,6 = 7. Kemudian 7 + 1,35 = 8,35.',v:{t:'flow',items:['4,2 ÷ 0,6','7','+ 1,35','?']}},
+{topic:'Operasi',level:'Easy',q:'25% dari 360 adalah ...',opts:['72','80','90','120'],a:2,hint:'25% = 1/4.',exp:'25% × 360 = 1/4 × 360 = 90.',v:{t:'percent',p:25,label:'25% dari 360'}},
+{topic:'Operasi',level:'Medium',q:'Suatu nilai 120 dinaikkan 15%. Nilai barunya adalah ...',opts:['132','136','138','140'],a:2,hint:'15% dari 120 = 18.',exp:'Kenaikan = 0,15 × 120 = 18. Nilai baru = 120 + 18 = 138.',v:{t:'flow',items:['120','+15%','+18','138']}},
+{topic:'Operasi',level:'Medium',q:'Harga Rp250.000 mendapat diskon 20%. Harga setelah diskon adalah ...',opts:['Rp180.000','Rp190.000','Rp200.000','Rp210.000'],a:2,hint:'Setelah diskon 20%, yang dibayar adalah 80%.',exp:'80% × Rp250.000 = Rp200.000.',v:{t:'money',items:['Rp250.000','−20%','Rp200.000']}},
+{topic:'Operasi',level:'Medium',q:'(3/4 + 0,5) × 40% = ...',opts:['0,4','0,5','0,6','1,0'],a:1,hint:'3/4 = 0,75. Selesaikan yang di dalam kurung dahulu.',exp:'(0,75 + 0,5) × 0,4 = 1,25 × 0,4 = 0,5.',v:{t:'flow',items:['3/4 + 0,5','1,25','× 40%','?']}},
+{topic:'Operasi',level:'Medium',q:'1 1/2 − 0,35 + 20% dari 2 = ...',opts:['1,35','1,45','1,55','1,65'],a:2,hint:'1 1/2 = 1,5 dan 20% dari 2 = 0,4.',exp:'1,5 − 0,35 + 0,4 = 1,15 + 0,4 = 1,55.',v:{t:'flow',items:['1,5','− 0,35','+ 0,4','1,55']}},
+{topic:'Operasi',level:'Medium',q:'(5/6 ÷ 2/3) − 0,25 = ...',opts:['0,75','1','1,25','1,5'],a:1,hint:'5/6 ÷ 2/3 = 5/6 × 3/2.',exp:'5/6 × 3/2 = 15/12 = 5/4 = 1,25. Lalu 1,25 − 0,25 = 1.',v:{t:'flow',items:['5/6 ÷ 2/3','5/4','− 0,25','?']}},
+{topic:'Operasi',level:'Difficult',q:'(1,2 + 3/5) ÷ 0,3 = ...',opts:['4','5','6','7'],a:2,hint:'3/5 = 0,6. Jumlahkan dahulu.',exp:'1,2 + 0,6 = 1,8. Kemudian 1,8 ÷ 0,3 = 6.',v:{t:'flow',items:['1,2 + 3/5','1,8','÷ 0,3','6']}},
+{topic:'Operasi',level:'Difficult',q:'80% × (2,5 − 3/4) = ...',opts:['1,2','1,4','1,6','1,8'],a:1,hint:'3/4 = 0,75. Hitung isi kurung dulu.',exp:'2,5 − 0,75 = 1,75. Lalu 80% × 1,75 = 0,8 × 1,75 = 1,4.',v:{t:'flow',items:['2,5 − 3/4','1,75','× 80%','1,4']}},
+{topic:'Operasi',level:'Difficult',q:'[3/5 + 1,2] ÷ [0,75 − 1/4] = ...',opts:['2,4','3,0','3,6','4,2'],a:2,hint:'Ubah 3/5 menjadi 0,6 dan 1/4 menjadi 0,25.',exp:'Pembilang: 0,6 + 1,2 = 1,8. Penyebut: 0,75 − 0,25 = 0,5. Jadi 1,8 ÷ 0,5 = 3,6.',v:{t:'flow',items:['0,6 + 1,2','÷','0,75 − 0,25','?']}},
+
+{topic:'Soal Cerita',level:'Medium',q:'SSD berkapasitas 512 GB sudah terisi 62,5%. Berapa GB yang sudah digunakan?',opts:['300 GB','312 GB','320 GB','328 GB'],a:2,hint:'62,5% = 5/8.',exp:'512 × 5/8 = 64 × 5 = 320 GB.',v:{t:'story',icon:'💾',big:'512 GB',small:'terisi 62,5%'}},
+{topic:'Soal Cerita',level:'Medium',q:'Satu resep membutuhkan 3/4 cangkir gula. Untuk membuat 2,5 resep, gula yang dibutuhkan adalah ...',opts:['1 1/2 cangkir','1 3/4 cangkir','1 7/8 cangkir','2 1/4 cangkir'],a:2,hint:'Kalikan 3/4 dengan 2,5 = 5/2.',exp:'3/4 × 5/2 = 15/8 = 1 7/8 cangkir.',v:{t:'story',icon:'🥣',big:'3/4 × 2,5',small:'cangkir gula'}},
+{topic:'Soal Cerita',level:'Difficult',q:'Aman memiliki Rp240.000. Ia memakai 35% untuk membeli buku, lalu 1/4 dari sisa uangnya untuk transportasi. Berapa uang yang tersisa?',opts:['Rp108.000','Rp117.000','Rp123.000','Rp126.000'],a:1,hint:'Hitung sisa setelah membeli buku dulu, baru ambil 1/4 dari sisa tersebut.',exp:'35% × 240.000 = 84.000, sisa 156.000. Transportasi = 1/4 × 156.000 = 39.000. Sisa akhir = 117.000.',v:{t:'money',items:['Rp240.000','−35%','sisa','−1/4 sisa','?']}},
+{topic:'Soal Cerita',level:'Difficult',q:'Sebuah tangki mula-mula terisi 3/5 bagian. Setelah ditambah 18 L, isinya menjadi 75%. Berapa kapasitas tangki?',opts:['90 L','100 L','120 L','150 L'],a:2,hint:'Selisih 75% dan 60% adalah 15% kapasitas.',exp:'3/5 = 60%. Kenaikan 15% kapasitas = 18 L, maka kapasitas = 18 ÷ 0,15 = 120 L.',v:{t:'tank',from:60,to:75,delta:'+18 L'}},
+{topic:'Soal Cerita',level:'Difficult',q:'Baterai ponsel berada pada 80%. Kemudian digunakan sebesar 37,5% dari daya yang tersedia saat itu. Berapa persen baterai yang tersisa?',opts:['42,5%','50%','52,5%','62,5%'],a:1,hint:'Yang tersisa adalah 62,5% dari 80%, bukan 80% − 37,5%.',exp:'Sisa = 80% × 62,5% = 0,8 × 0,625 = 0,5 = 50%.',v:{t:'battery',p:80,used:37.5}},
+{topic:'Soal Cerita',level:'Difficult',q:'Rata-rata tiga nilai awal Aman adalah 76 dan bobotnya 75% dari nilai akhir. Ujian akhir berbobot 25%. Agar nilai akhir 80, nilai ujian akhir minimal adalah ...',opts:['88','90','92','94'],a:2,hint:'Gunakan 0,75(76) + 0,25x = 80.',exp:'0,75×76 = 57. Maka 57 + 0,25x = 80 → 0,25x = 23 → x = 92.',v:{t:'flow',items:['75% × 76','+','25% × x','=','80']}},
+{topic:'Soal Cerita',level:'Difficult',q:'Jaket seharga Rp480.000 mendapat diskon 15%, lalu dikenai pajak 11% dari harga setelah diskon. Harga akhirnya adalah ...',opts:['Rp448.800','Rp452.880','Rp456.000','Rp462.000'],a:1,hint:'Diskon dulu, baru pajak. Jangan menjumlahkan 15% dan 11% secara langsung.',exp:'Setelah diskon: 480.000×0,85 = 408.000. Setelah pajak: 408.000×1,11 = 452.880.',v:{t:'money',items:['Rp480.000','× 85%','Rp408.000','× 111%','?']}},
+{topic:'Soal Cerita',level:'Difficult',q:'File 2,4 GB telah terunduh 37,5%. Lalu pada tahap kedua terunduh lagi 5/8 dari sisa file. Berapa GB yang belum terunduh?',opts:['0,45 GB','0,5625 GB','0,75 GB','0,9375 GB'],a:1,hint:'Setelah tahap pertama, sisa = 62,5% dari 2,4 GB. Setelah itu tersisa 3/8 dari sisa tersebut.',exp:'Sisa tahap 1 = 2,4×0,625 = 1,5 GB. Sisa tahap 2 = 3/8×1,5 = 0,5625 GB.',v:{t:'story',icon:'⬇️',big:'2,4 GB',small:'37,5% lalu 5/8 dari sisa'}},
+{topic:'Soal Cerita',level:'Medium',q:'Dari 40 siswa, 3/5 memilih klub robotik. Dari anggota robotik, 25% adalah perempuan. Berapa siswa laki-laki di klub robotik?',opts:['12','16','18','24'],a:2,hint:'Cari dulu 3/5 dari 40, lalu 75% dari jumlah anggota robotik.',exp:'Anggota robotik = 3/5×40 = 24. Perempuan = 25%×24 = 6. Laki-laki = 24−6 = 18.',v:{t:'people',total:40,on:24,alt:6,label:'24 anggota robotik; 6 perempuan'}},
+{topic:'Soal Cerita',level:'Difficult',q:'Traffic server 1.250 request/menit naik 20%, kemudian turun 15% dari nilai barunya. Traffic akhirnya adalah ...',opts:['1.250','1.260','1.275','1.300'],a:2,hint:'Perubahan berturut-turut berarti dikali 1,20 lalu dikali 0,85.',exp:'1.250×1,20 = 1.500. Lalu 1.500×0,85 = 1.275 request/menit.',v:{t:'flow',items:['1.250','×1,20','1.500','×0,85','1.275']}}
+];
+
+let idx=0, score=0, timer=null, timeLeft=60, bonus=10, answered=false, hintUsed=0;
+let student='Aman'; const answers=[]; const letters=['A','B','C','D'];
+const $=s=>document.querySelector(s);
+
+function renderVisual(v){
+  if(!v) return '<div class="caption">Visualisasi soal</div>';
+  if(v.t==='fraction'){
+    let cells=''; for(let i=0;i<v.d;i++) cells += `<div class="cell ${i<v.n?'on':''}"></div>`;
+    return `<div style="width:100%"><div class="visual-title">Model pecahan</div><div class="fracbar">${cells}</div><div class="caption">${v.label||''}</div></div>`;
+  }
+  if(v.t==='percent'){
+    return `<div><div class="visual-title">Model persen</div><div class="ring" style="background:conic-gradient(var(--purple) ${v.p}%,#e7e2f5 0)"><span>${v.p}%</span></div><div class="caption">${v.label||''}</div></div>`;
+  }
+  if(v.t==='convert') return `<div style="width:100%"><div class="visual-title">Ekuivalensi bentuk</div><div class="flow">${v.items.map((x,i)=>`<div class="node">${x}</div>${i<v.items.length-1?'<div class="arrow">↔</div>':''}`).join('')}</div></div>`;
+  if(v.t==='flow') return `<div style="width:100%"><div class="visual-title">Alur perhitungan</div><div class="flow">${v.items.map((x,i)=>`<div class="node">${x}</div>${i<v.items.length-1?'<div class="arrow">→</div>':''}`).join('')}</div></div>`;
+  if(v.t==='numberline'){
+    const ticks=v.vals.map(([lab,val])=>{const p=((val-v.min)/(v.max-v.min))*96+2;return `<div class="tick" style="left:${p}%">${lab}</div>`}).join('');
+    return `<div style="width:100%"><div class="visual-title">Garis bilangan</div><div class="numberline"><div class="line"></div>${ticks}</div></div>`;
+  }
+  if(v.t==='money') return `<div style="width:100%"><div class="visual-title">Alur nilai uang</div><div class="money">${v.items.map((x,i)=>`<div class="tag">${x}</div>${i<v.items.length-1?'<div class="arrow">→</div>':''}`).join('')}</div></div>`;
+  if(v.t==='story') return `<div class="story"><div class="icon">${v.icon}</div><div><div class="big">${v.big}</div><small>${v.small}</small></div></div>`;
+  if(v.t==='tank') return `<div style="width:100%;max-width:560px"><div class="visual-title">Perubahan isi tangki</div><div class="flow"><div class="node">${v.from}% penuh</div><div class="arrow">${v.delta}</div><div class="node">${v.to}% penuh</div></div><div class="caption">Selisih persentase mewakili ${v.delta}</div></div>`;
+  if(v.t==='battery') return `<div style="width:100%;max-width:560px"><div class="visual-title">Baterai</div><div class="flow"><div class="node">🔋 ${v.p}%</div><div class="arrow">→</div><div class="node">dipakai ${v.used}% dari daya tersedia</div><div class="arrow">→</div><div class="node">?</div></div></div>`;
+  if(v.t==='people'){
+    let ps=''; for(let i=0;i<v.total;i++){let cls=i<v.on?'on':''; if(i<v.alt) cls='alt'; ps+=`<div class="person ${cls}"></div>`}
+    return `<div><div class="visual-title">Komposisi siswa</div><div class="people">${ps}</div><div class="caption">${v.label}</div></div>`;
+  }
+  return '<div class="caption">Visualisasi soal</div>';
+}
+
+function startQuiz(){
+  student=$('#studentName').value.trim()||'Aman'; bonus=parseInt($('#bonusTime').value,10)||0;
+  idx=0;score=0;hintUsed=0;answers.length=0;
+  $('#startScreen').classList.add('hidden'); $('#resultScreen').classList.add('hidden'); $('#quizScreen').classList.remove('hidden');
+  $('#studentChip').textContent=student; showQuestion();
+}
+function startTimer(){clearInterval(timer); timeLeft=60+bonus; updateTimer(); timer=setInterval(()=>{timeLeft--;updateTimer();if(timeLeft<=0){clearInterval(timer);submitAnswer(null,true)}},1000)}
+function updateTimer(){ $('#timerText').textContent=timeLeft; $('#timerBox').classList.toggle('danger',timeLeft<=15); }
+function showQuestion(){
+  answered=false; const q=questions[idx];
+  $('#progressText').textContent=`Soal ${idx+1} dari ${questions.length}`; $('#scoreText').textContent=`Skor ${score}`;
+  $('#progressFill').style.width=`${(idx/questions.length)*100}%`;
+  $('#topicChip').textContent=q.topic; $('#levelChip').textContent=q.level; $('#levelChip').className='chip level-'+q.level.toLowerCase();
+  $('#questionText').innerHTML=q.q; $('#visual').innerHTML=renderVisual(q.v);
+  $('#options').innerHTML=q.opts.map((o,i)=>`<button class="opt" data-i="${i}"><span class="letter">${letters[i]}</span><span>${o}</span></button>`).join('');
+  document.querySelectorAll('.opt').forEach(b=>b.addEventListener('click',()=>submitAnswer(parseInt(b.dataset.i),false)));
+  $('#hintBox').classList.add('hidden'); $('#feedback').classList.add('hidden'); $('#nextRow').classList.add('hidden');
+  $('#hintBtn').disabled=false; $('#hintBtn').textContent='💡 Lihat hint'; $('#hintCountText').textContent=`Hint digunakan: ${hintUsed}`;
+  startTimer();
+}
+function showHint(){ if(answered)return; const q=questions[idx]; if($('#hintBox').classList.contains('hidden')){hintUsed++;$('#hintBox').innerHTML='<b>Hint:</b> '+q.hint;$('#hintBox').classList.remove('hidden');$('#hintBtn').disabled=true;$('#hintBtn').textContent='Hint terbuka';$('#hintCountText').textContent=`Hint digunakan: ${hintUsed}`;}}
+function submitAnswer(choice,timeout){
+  if(answered)return; answered=true; clearInterval(timer); const q=questions[idx]; const correct=choice===q.a; if(correct)score++;
+  document.querySelectorAll('.opt').forEach((b,i)=>{b.disabled=true;if(i===q.a)b.classList.add('correct');else if(i===choice)b.classList.add('wrong')});
+  const fb=$('#feedback'); fb.className='feedback '+(correct?'good':'bad');
+  fb.innerHTML=`<strong>${correct?'✅ Benar!':timeout?'⏱️ Waktu habis':'❌ Belum tepat'}</strong>${correct?'':`Jawaban yang benar: <b>${letters[q.a]}. ${q.opts[q.a]}</b><br>`}<span>${q.exp}</span>`; fb.classList.remove('hidden');
+  answers.push({idx,choice,correct,timeout,topic:q.topic,usedHint:!$('#hintBox').classList.contains('hidden')});
+  $('#scoreText').textContent=`Skor ${score}`; $('#nextRow').classList.remove('hidden'); $('#hintBtn').disabled=true;
+  $('#nextBtn').textContent=idx===questions.length-1?'Lihat hasil →':'Soal berikutnya →';
+}
+function nextQuestion(){ idx++; if(idx>=questions.length)finishQuiz(); else showQuestion(); }
+function finishQuiz(){
+  clearInterval(timer); $('#quizScreen').classList.add('hidden'); $('#resultScreen').classList.remove('hidden');
+  const pct=Math.round(score/questions.length*100); const passed=pct>=80;
+  const topicNames=[...new Set(questions.map(q=>q.topic))];
+  const topicHtml=topicNames.map(t=>{const all=answers.filter(a=>a.topic===t);const ok=all.filter(a=>a.correct).length;const p=Math.round(ok/all.length*100);return `<div class="topic-row"><b>${t}</b><div class="bar"><span style="width:${p}%"></span></div><b>${p}%</b></div>`}).join('');
+  const wrongs=answers.filter(a=>!a.correct); const review=wrongs.length?wrongs.map(a=>{const q=questions[a.idx];return `<div class="review-item"><b>Soal ${a.idx+1}</b> — ${q.q}<br><span>Jawaban benar: <strong>${q.opts[q.a]}</strong>. ${q.exp}</span></div>`}).join(''):'<p>Semua soal terjawab benar. Mantap! 🎉</p>';
+  const key='rationalRushBest'; const prev=parseInt(localStorage.getItem(key)||'0',10); if(pct>prev)localStorage.setItem(key,pct);
+  $('#resultScreen').innerHTML=`<div class="kicker">${passed?'🎯 Target tercapai':'📌 Masih perlu penguatan'}</div><h1>Hasil ${student}</h1><div class="scorebig">${pct}%</div><p>${score} benar dari ${questions.length} soal. ${passed?'Fondasi bilangan rasional sudah cukup kuat untuk dilanjutkan ke latihan yang lebih kompleks.':'Prioritaskan kembali soal yang salah, terutama pada topik dengan akurasi di bawah 80%.'}</p><div class="summary-grid"><div class="mini"><b>${score}/35</b><small>jawaban benar</small></div><div class="mini"><b>${questions.length-score}</b><small>perlu review</small></div><div class="mini"><b>${hintUsed}</b><small>hint digunakan</small></div><div class="mini"><b>${Math.max(prev,pct)}%</b><small>skor terbaik</small></div></div><h3>Analisis per topik</h3>${topicHtml}<div class="review"><h3>Review jawaban yang perlu diperbaiki</h3>${review}</div><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:22px"><button class="btn btn-primary" onclick="restart()">Ulangi kuis</button><button class="btn btn-ghost" onclick="location.reload()">Kembali ke awal</button></div>`;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function restart(){idx=0;score=0;hintUsed=0;answers.length=0;$('#resultScreen').classList.add('hidden');$('#quizScreen').classList.remove('hidden');showQuestion();window.scrollTo({top:0,behavior:'smooth'})}
+function loadBest(){const b=localStorage.getItem('rationalRushBest');$('#bestScore').textContent=b?`Skor terbaik di browser ini: ${b}%`:'Belum ada skor tersimpan di browser ini.'}
+$('#startBtn').addEventListener('click',startQuiz); $('#hintBtn').addEventListener('click',showHint); $('#nextBtn').addEventListener('click',nextQuestion); loadBest();
+</script>
+</body>
+</html>
